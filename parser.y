@@ -1,19 +1,21 @@
 %{
+int yylex();
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int yylex();
-int yyerror(char *s)
+int yyerror(char *s);
+
+extern int yynerrs;
+extern int yylexerrs;
+extern FILE* yyin;
 
 %}
 
 %token INICIO REPETIR MOSTRAME NUMERO PALABRA FINAL PUNTO PUNTOYCOMA OPERADOR CORCHDER CORCHIZQ
-
 %token <id> ID
-
 %token <cte> CONSTANTE
-
 %token <string> CADENA
 
 %%
@@ -40,3 +42,10 @@ expresion:
 
 %%
 
+int main(int argc, char** argv){
+    if(argc > 2){
+        return EXIT_FAILURE;
+    }
+    
+    return yyparse();
+}

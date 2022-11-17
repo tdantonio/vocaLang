@@ -1,13 +1,14 @@
 %{
 
-    #include <stdio.h>
-    #include <string.h>
+#include <stdio.h>
+#include <string.h>
+#include "TS.c"
 
-    void yyerror(char *s);
-    int yylex();
+void yyerror(char *s);
+int yylex();
 
-    char buffer[32];
-    int yylexerrs;
+char buffer[32];
+int yylexerrs;
 %}
 
 digito                  [0-9]
