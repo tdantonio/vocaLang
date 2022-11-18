@@ -26,10 +26,10 @@ cadena                  {vocal}{letra}*
 {cadena}                {return CADENA;}
 {identificador}         {return ID;}
 {constante}             {return CONSTANTE;}
-.                       yyerror();
+
 
 %%
-
+/*
 int yyerror(void){
     printf("Error lexico.");
 }
@@ -39,3 +39,4 @@ int main (int argc, char** argv){
     fclose(yylex);
     return 0;
 }
+*/

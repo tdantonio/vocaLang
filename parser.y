@@ -11,7 +11,7 @@ FILE* yyin;
 FILE* yyout;
 
 void yyerror(char* s){
-    printf("Error sintactico")
+    printf("Error sintactico");
 }
 
 %}
@@ -48,14 +48,20 @@ int main(int argc, char *argv[]){
     if(argc == 2){
         yyin = fopen(argv[1], "r");
         yyout = fopen("salida.txt", "w");
+
+        if(yyin == NULL){
+            printf("No se pudo encontrar el archivo");
+            return 0;
+        }
         yyparse();
 
         fclose(yyin);
         fclose(yyout);
     }else
     {
+        printf("Ingrese a.exe y el txt a probar");
         return 1;
     }
     
-    return 0;
+    //return 0;
 }
