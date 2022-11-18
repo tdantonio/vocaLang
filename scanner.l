@@ -4,7 +4,7 @@
 %}
 
 digito                  [0-9]
-vocal                   [aeio]
+vocal                   [aeiou]
 letra                   [aeiou_]
 constante               ({digito})+
 identificador           {letra}({letra}|{digito})*
@@ -26,7 +26,7 @@ cadena                  {vocal}{letra}*
 {cadena}                {return CADENA;}
 {identificador}         {return ID;}
 {constante}             {return CONSTANTE;}
-
+.                       {printf("Error lexico\n");}
 
 %%
 /*

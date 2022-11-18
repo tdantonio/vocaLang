@@ -11,7 +11,7 @@ FILE* yyin;
 FILE* yyout;
 
 void yyerror(char* s){
-    printf("Error sintactico");
+    printf("Error Sintactico\n");
 }
 
 %}
@@ -32,14 +32,14 @@ listaSentencias:
 ;
 
 sentencia:
-        REPETIR CORCHIZQ CADENA PUNTOYCOMA CONSTANTE CORCHDER PUNTO
-    |   MOSTRAME CORCHIZQ CADENA CORCHDER PUNTO
+        REPETIR CORCHIZQ CADENA PUNTOYCOMA CONSTANTE CORCHDER PUNTO {printf("Sentencia Repetir Reconocida\n");}
+    |   MOSTRAME CORCHIZQ CADENA CORCHDER PUNTO                     {printf("Sentencia Mostrame Reconocida\n");}
     |   expresion
 ;
 
 expresion:
-        NUMERO ID OPERADOR CONSTANTE PUNTO
-    |   PALABRA ID OPERADOR CADENA PUNTO
+        NUMERO ID OPERADOR CONSTANTE PUNTO                          {printf("Asignacion Numero Reconocida\n");}
+    |   PALABRA ID OPERADOR CADENA PUNTO                            {printf("Asignacion Palabra Reconocida\n");}
 ;
 
 %%
