@@ -1,25 +1,27 @@
 %{
-int yylex();
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "parser.tab.h"
 
-int yyerror(char *s);
+int yylex();
+int yywrap(){
+    return 1;
+}
 
-extern int yynerrs;
-extern int yylexerrs;
-extern FILE* yyin;
+FILE* yyin;
+FILE* yyout;
+
+void yyerror(char* s){
+    printf("Error sintactico")
+}
 
 %}
 
 %token INICIO REPETIR MOSTRAME NUMERO PALABRA FINAL PUNTO PUNTOYCOMA OPERADOR CORCHDER CORCHIZQ
-%token <id> ID
-%token <cte> CONSTANTE
-%token <string> CADENA
+%token ID
+%token CONSTANTE
+%token CADENA
 
 %%
-
 programa:
         INICIO listaSentencias FINAL
 ;
@@ -42,10 +44,18 @@ expresion:
 
 %%
 
-int main(int argc, char** argv){
-    if(argc > 2){
-        return EXIT_FAILURE;
+int main(int argc, char *argv[]){
+    if(argc == 2){
+        yyin = fopen(argv[1], "r");
+        yyout = fopen("salida.txt", "w");
+        yyparse();
+
+        fclose(yyin);
+        fclose(yyout);
+    }else
+    {
+        return 1;
     }
     
-    return yyparse();
+    return 0;
 }
