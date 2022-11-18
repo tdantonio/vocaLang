@@ -2,30 +2,35 @@
 #include <stdlib.h>
 #include <string.h>
 
-const TAM_FILAS = 20;
-const TAM_COLUM = 17;
+const tam_filas = 20;
+const tam_colum = 17;
 
 // dudas: como implementar la tabla?
 //        como se vinculan el scanner/parser con la tabla de simbolos? 
 
-int TS[20][17];
+int ts[20][17];
 
 void armarTabla(){
-    for(int i=0; i<=18; i++){
-        TS[i][0] = i;
+    for(int i=1; i<=19; i++){
+        ts[i][0] = i;
     }
 
-    TS[1][1] = 1;
-    TS[1][2] = 1;
-    TS[1][3] = 1;
-
+    ts[1][1] = 1;
+    ts[1][2] = 1;
+    ts[1][3] = 1;
+    // ...
+    
     // no estamos seguros todavia, falta implementar
+}
+
+void cargarEnTabla(int fila, int columna, int estado){
+    ts[fila][columna] = estado
 }
 
 int buscarCaracter(char c){
     int indice = -1;
-    for(int i=1; i+1<TAM_COLUM; i++){
-        if(TS[0][i] == c){
+    for(int i=1; i+1<tam_colum; i++){
+        if(ts[0][i] == c){
             indice=i;
         }
     }
@@ -33,7 +38,7 @@ int buscarCaracter(char c){
 }
 
 bool esFinal(estado){
-    if(estado != 0  && estado != 19){
+    if(estado != 0  || estado != 99){
         return true;
     }
     return false;
@@ -49,7 +54,7 @@ int reconocerToken(char* s){
             return -1;
         }
         int indice = buscarCaracter(caracter);
-        estadoActual = TS[estadoActual][indice];
+        estadoActual = ts[estadoActual][indice];
         i++;
     }
 
