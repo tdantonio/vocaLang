@@ -82,7 +82,7 @@ FILE* yyin;
 FILE* yyout;
 
 void yyerror(char* s){
-    printf("Error sintactico");
+    printf("Error Sintactico\n");
 }
 
 
@@ -1343,59 +1343,38 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 3:
-
-/* Line 1455 of yacc.c  */
-#line 30 "parser.y"
-    {printf("Sentencia\n");;}
-    break;
-
-  case 4:
-
-/* Line 1455 of yacc.c  */
-#line 31 "parser.y"
-    {printf("Sentencia\n");;}
-    break;
-
-  case 5:
+        case 5:
 
 /* Line 1455 of yacc.c  */
 #line 35 "parser.y"
-    {printf("Sentencia\n");;}
+    {printf("Sentencia Repetir Reconocida\n");;}
     break;
 
   case 6:
 
 /* Line 1455 of yacc.c  */
 #line 36 "parser.y"
-    {printf("Sentencia\n");;}
-    break;
-
-  case 7:
-
-/* Line 1455 of yacc.c  */
-#line 37 "parser.y"
-    {printf("Sentencia\n");;}
+    {printf("Sentencia Mostrame Reconocida\n");;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
 #line 41 "parser.y"
-    {printf("Expresion\n");;}
+    {printf("Asignacion Numero Reconocida\n");;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
 #line 42 "parser.y"
-    {printf("Expresion\n");;}
+    {printf("Asignacion Palabra Reconocida\n");;}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1399 "parser.tab.c"
+#line 1378 "parser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
